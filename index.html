@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>D3 Project Starter Template</title>
+    <meta charset="UTF-8">
+    <link rel="icon" href="data:;base64,iVBORwOKGO=" />
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body> 
+
+
+    <!-- Add HTML content, SVG drawing area, ... -->
+    
+    <!-- D3 bundle -->
+    <script src="js/d3.v6.min.js"></script>
+
+    <script>d3.select("body").append("p").text("Hello World!");</script>
+    <p>Hello World!</p>
+
+    <script>
+
+        d3.select("body").append("p").text("Hello World!");
+
+
+        const sandwiches = [
+        { name: "Thesis", price: 7.95, size: "large" },
+        { name: "Dissertation", price: 8.95, size: "large" },
+        { name: "Highlander", price: 6.50, size: "small" },
+        { name: "Just Tuna", price: 6.50, size: "small" },
+        { name: "So-La", price: 7.95, size: "large" },
+        { name: "Special", price: 12.50, size: "small" }
+        ];
+
+
+        const svg = d3.select('body').append('svg')
+            .attr('width', 500)
+            .attr('height', 500);
+
+
+        svg.selectAll('circle')
+            .data(sandwiches)
+            .enter()
+            .append('circle')
+            .style('stroke', 'black')
+
+        .attr('fill', d => {
+            if(d.price < 7){
+                return 'red'
+            } else {
+                return 'green'
+            }
+
+            })
+
+        .attr('cy', 100)
+        .attr('r', d => {
+            if(d.size == "large"){
+                return 20
+            } else {
+                return 10
+            }
+        }).attr('cx', (d, index) => index * 60);
+
+
+
+
+    </script>
+
+
+    <!-- Our JS code -->
+    <script src="js/main.js"></script>
+</body>
+</html>
